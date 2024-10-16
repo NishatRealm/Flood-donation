@@ -17,15 +17,17 @@ const historyBtn = document.getElementById('history-btn');
 function updateDonationCard(cardElement, donationAmount) {
     const donationAmountElement = cardElement.querySelector('.donation-amount');
     const previousAmount = parseFloat(donationAmountElement.textContent) || 0;
+    console.log('Donation amount added:', donationAmount);
     donationAmountElement.textContent = (previousAmount + donationAmount) + ' BDT';
 }
 
 // Function to handle donation and update balance
 function makeDonation(cardElement, donationAmount) {
+    console.log('Current balance:', currentBalance);
     if (donationAmount > 0 && donationAmount <= currentBalance) {
         currentBalance -= donationAmount;
         balanceElement.textContent = currentBalance + ' BDT';  // Update balance on screen
-
+        console.log('New balance after donation:', currentBalance);
         // Record donation and date
         const donationDate = new Date().toLocaleString();
         donationHistory.push({ amount: donationAmount, date: donationDate });
